@@ -1,0 +1,18 @@
+{
+  "name": "git-hoist",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markgardner/git-hoist.git"
+  },
+  "author": "Mark Gardner",
+  "license": "BSD",
+  "dependencies": {
+    "asset-manager": "git+https://github.com/fs-webdev/asset-manager.git"
+  }
+}
