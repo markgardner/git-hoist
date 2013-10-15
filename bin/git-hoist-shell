@@ -3,41 +3,18 @@
 var net = require('net'),
 	spawn = require('child_process').spawn,
 
-	commands = {
-		'git-upload-pack': function(path, perm) {
-			spawn('git', ['upload-pack', path], {
-				stdio: [process.stdin, process.stdout, process.stderr]
-			}).on('close', function(code) {
-				process.exit(code);
-			});
-		},
-		'git-receive-pack': function(path, perm) {
-			spawn('git', ['receive-pack', path], {
-				stdio: [process.stdin, process.stdout, process.stderr]
-			}).on('close', function(code) {
-				process.exit(code);
-			});
-		},
-		'git-upload-archive': function(path, perm) {
-			spawn('git', ['upload-archive', path], {
-				stdio: [process.stdin, process.stdout, process.stderr]
-			}).on('close', function(code) {
-				process.exit(code);
-			});
-		}
-	},
-
 	username = process.argv[2],
 	auth_port = parseInt(process.argv[3]),
 
 	ssh_command = process.env.SSH_ORIGINAL_COMMAND || '',
-	gitCommand = commands[ssh_command.match(/[\w-]+/)],
-	gitRepo = ssh_command.slice(ssh_command.indexOf("'") + 1, ssh_command.lastIndexOf("'")),
+	commandParts = ssh_command.match(/^(git)[\s-](upload-archive|receive-pack|upload-pack)\s'(.+)'$/),
+	gitCommand = commandParts && commandParts[2],
+	gitRepo = commandParts && commandParts[3],
 
 	auth_client,
 	auth_received = false;
 
-if(!gitCommand || !auth_port || !username || !gitRepo) {
+if(!gitCommand || !gitRepo || !auth_port || !username) {
 	console.error('Nothing to do, exiting.');
 	process.exit(1);
 } else {
@@ -53,8 +30,13 @@ if(!gitCommand || !auth_port || !username || !gitRepo) {
 
 		if(!perm) {
 			console.error('Unable to access repo "' + gitRepo + '"');
+			process.exit(1);
 		} else {
-			gitCommand(path, perm);
+			spawn('git', [gitCommand, path], {
+				stdio: [process.stdin, process.stdout, process.stderr]
+			}).on('close', function(code) {
+				process.exit(code);
+			});
 		}
 
 		auth_client.end();
