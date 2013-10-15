@@ -1,1 +1,72 @@
 #!/usr/bin/env node
+
+var net = require('net'),
+	spawn = require('child_process').spawn,
+
+	commands = {
+		'git-upload-pack': function(path, perm) {
+			spawn('git', ['upload-pack', path], {
+				stdio: [process.stdin, process.stdout, process.stderr]
+			}).on('close', function(code) {
+				process.exit(code);
+			});
+		},
+		'git-receive-pack': function(path, perm) {
+			spawn('git', ['receive-pack', path], {
+				stdio: [process.stdin, process.stdout, process.stderr]
+			}).on('close', function(code) {
+				process.exit(code);
+			});
+		},
+		'git-upload-archive': function(path, perm) {
+			spawn('git', ['upload-archive', path], {
+				stdio: [process.stdin, process.stdout, process.stderr]
+			}).on('close', function(code) {
+				process.exit(code);
+			});
+		}
+	},
+
+	username = process.argv[2],
+	auth_port = parseInt(process.argv[3]),
+
+	ssh_command = process.env.SSH_ORIGINAL_COMMAND || '',
+	gitCommand = commands[ssh_command.match(/[\w-]+/)],
+	gitRepo = ssh_command.slice(ssh_command.indexOf("'") + 1, ssh_command.lastIndexOf("'")),
+
+	auth_client,
+	auth_received = false;
+
+if(!gitCommand || !auth_port || !username || !gitRepo) {
+	console.error('Nothing to do, exiting.');
+	process.exit(1);
+} else {
+	auth_client = net.connect(auth_port, function() {
+		auth_client.write(gitRepo + '\x00' + username);
+	});
+
+	auth_client.on('data', function(data) {
+		var perm = data.readUInt32LE(0),
+			path = data.toString('utf8', 4);
+
+		auth_received = true;
+
+		if(!perm) {
+			console.error('Unable to access repo "' + gitRepo + '"');
+		} else {
+			gitCommand(path, perm);
+		}
+
+		auth_client.end();
+	});
+
+	auth_client.on('end', checkAuthClient);
+	setTimeout(checkAuthClient, 1000); // Timeout for requests that take longer than they should
+}
+
+function checkAuthClient() {
+	if(!auth_received) {
+		console.error('Problem communicating with auth service');
+		process.exit(1);
+	}
+}
