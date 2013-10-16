@@ -3,6 +3,8 @@
 var net = require('net'),
 	spawn = require('child_process').spawn,
 
+	access = require('../lib/access_enum'),
+
 	username = process.argv[2],
 	auth_port = parseInt(process.argv[3]),
 
@@ -28,7 +30,8 @@ if(!gitCommand || !gitRepo || !auth_port || !username) {
 
 		auth_received = true;
 
-		if(!perm) {
+		if((gitCommand === 'receive-pack' && !access.canWrite(perm)) || 
+			(gitCommand !== 'receive-pack' && !access.canRead(perm))) {
 			console.error('Unable to access repo "' + gitRepo + '"');
 			process.exit(1);
 		} else {
