@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	ul
+		each repo in repos
+			li
+				div.col-project
+					a(href=repo.name)= repo.title
+				div.col-desc= repo.description
+				div.col-owner= repo.owner
+				div.col-change !{repo.lastCommit ? repo.lastCommit.date : '<i>No Commits</i>'}
