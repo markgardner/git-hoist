@@ -11,8 +11,9 @@ block content
 					div.col-xs-3.text-right latest commit #{lastcommit.hash.slice(0, 10)}
 		div.panel-body
 			ul.list-unstyled
-				li
-					a(href="") ..
+				if (parentPath)
+					li
+						a(href=commandUrl('tree', parentPath)) ..
 				each item in tree
 					li.row
 						div.col-xs-3.ellipsis
