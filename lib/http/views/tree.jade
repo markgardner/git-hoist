@@ -5,3 +5,4 @@ block content
 	ul
 		each item in tree
 			li= JSON.stringify(item)
+			li= commandUrl(item.type, item.file)
