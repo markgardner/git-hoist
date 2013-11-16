@@ -1,8 +1,25 @@
 extends layout
 
 block content
-	p= JSON.stringify(lastcommit)
-	ul
-		each item in tree
-			li= JSON.stringify(item)
-			li= commandUrl(item.type, item.file)
+	div.panel.panel-default
+		div.panel-heading
+			if (lastcommit)
+				div.ellipsis= lastcommit.message
+				div.row
+					div.col-xs-9(title=lastcommit.person_email) #{lastcommit.person_name} authored 
+						time.js-time(datetime=lastcommit.dateFormatted)= lastcommit.date
+					div.col-xs-3.text-right latest commit #{lastcommit.hash.slice(0, 10)}
+		div.panel-body
+			ul.list-unstyled
+				li
+					a(href="") ..
+				each item in tree
+					li.row
+						div.col-xs-3.ellipsis
+							a(href=commandUrl(item.type, item.file))
+								span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
+								|  #{item.name}
+						div.col-xs-7.ellipsis= (item.lastcommit && item.lastcommit.message)
+						div.col-xs-2.text-right
+							if (item.lastcommit)
+								time.js-time(datetime=item.lastcommit.dateFormatted)= item.lastcommit.date

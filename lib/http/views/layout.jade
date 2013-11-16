@@ -3,11 +3,15 @@ html(lang="en")
 	head
 		title= site.sitename
 		link(rel="icon",type="image/png",href="/fav-icon.png")
+		link(rel="stylesheet",href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css")
 
 		block header
 	body
-		h1= site.sitename
+		div.container
+			h1= site.sitename
+				small= renderTimeSpan
 
-		block content
+			block content
 
-		block scripts
+		script(src="//code.jquery.com/jquery-1.10.2.min.js")
+		script(src="/js/git-hoist.js")
