@@ -1,6 +1,17 @@
 extends layout
 
 block content
+	h2= repo
+
+	ol.breadcrumb
+		li
+			a(href=commandUrl('tree', '/'))= repo
+		each trailDef, name in trails
+			if (trailDef.last)
+				li.active= trailDef.name
+			else
+				li
+					a(href=commandUrl('tree', name))= trailDef.name
 	div.panel.panel-default.command-tree
 		div.panel-heading
 			if (lastcommit)
