@@ -24,3 +24,8 @@ block content
 						div.col-xs-2.text-right
 							if (item.lastcommit)
 								time.js-time(datetime=item.lastcommit.dateFormatted)= item.lastcommit.date
+
+	if (readme)
+		div.panel.panel-default.command-tree
+			div.panel-heading REAME.md
+			div.panel-body !{readme}
