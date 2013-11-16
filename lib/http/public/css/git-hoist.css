@@ -3,3 +3,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+
+.command-tree .glyphicon {
+	color: #777;
+}

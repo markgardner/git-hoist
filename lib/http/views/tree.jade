@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	div.panel.panel-default
+	div.panel.panel-default.command-tree
 		div.panel-heading
 			if (lastcommit)
 				div.ellipsis= lastcommit.message
@@ -17,9 +17,9 @@ block content
 				each item in tree
 					li.row
 						div.col-xs-3.ellipsis
-							a(href=commandUrl(item.type, item.file))
-								span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
-								|  #{item.name}
+							span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
+							|  
+							a(href=commandUrl(item.type, item.file))= item.name
 						div.col-xs-7.ellipsis= (item.lastcommit && item.lastcommit.message)
 						div.col-xs-2.text-right
 							if (item.lastcommit)
