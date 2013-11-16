@@ -21,3 +21,21 @@ h2 {
 	line-height: 28px;
 	vertical-align: middle;
 }
+
+.breadcrumb .btn-group {
+	margin-right: 10px;
+}
+
+.breadcrumb>li.no-slash:before,
+.breadcrumb>li.no-slash:after {
+	content: none;
+}
+
+.breadcrumb>li {
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.breadcrumb>li.no-slash {
+	margin-top: 4px;
+}

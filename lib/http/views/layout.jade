@@ -19,6 +19,31 @@ html(lang="en")
 					p.navbar-text.navbar-right= renderTimeSpan
 
 		div.container
+			if (repo)
+				h2= repo
+
+				ol.breadcrumb
+					li
+						div.btn-group
+							button.btn.btn-default.dropdown-toggle(type="button",data-toggle="dropdown")
+								span branch: 
+								span master 
+								span.caret
+							ul.dropdown-menu
+								li
+									a(href="") Link
+					li.no-slash
+						a(href=commandUrl('tree', '/'))= repo
+					each trailDef, name in trails
+						if (trailDef.last)
+							li.active= trailDef.name
+						else
+							li
+								a(href=commandUrl('tree', name))= trailDef.name
+					li.pull-right.no-slash
+						a(href=commandUrl('commits', blobPath))
+							span.glyphicon.glyphicon-list
+							|  History
 			block content
 
 		script(src="//code.jquery.com/jquery-1.10.2.min.js")
