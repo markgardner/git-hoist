@@ -6,9 +6,9 @@ block content
 			if (lastcommit)
 				div.ellipsis= lastcommit.message
 				div.row
-					div.col-xs-9(title=lastcommit.person_email) #{lastcommit.person_name} authored 
+					div.col-xs-6(title=lastcommit.person_email) #{lastcommit.person_name} authored 
 						time.js-time(datetime=lastcommit.dateFormatted)= lastcommit.date
-					div.col-xs-3.text-right latest commit #{lastcommit.hash.slice(0, 10)}
+					div.col-xs-6.text-right latest commit #{lastcommit.hash.slice(0, 10)}
 		div.panel-body
 			ul.list-unstyled
 				if (parentPath)
