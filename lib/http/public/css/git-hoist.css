@@ -39,3 +39,8 @@ h2 {
 .breadcrumb>li.no-slash {
 	margin-top: 4px;
 }
+
+pre.line-numbers {
+	padding-top: 0;
+	padding-bottom: 0;
+}

@@ -12,5 +12,8 @@ block content
 		div.panel-body
 			if (isImg)
 				img(src=commandUrl('raw', blobPath))
+			else if (isMarked)
+				!{blob}
 			else
-				pre.code= blob
+				pre(class=extension ? "line-numbers" : undefined)
+					code(class=extension ? 'language-' + extension : undefined)= blob
