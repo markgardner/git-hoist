@@ -8,19 +8,21 @@ block content
 				div.row
 					div.col-xs-6(title=lastcommit.person_email) #{lastcommit.person_name} authored 
 						time.js-time(datetime=lastcommit.dateFormatted)= lastcommit.date
-					div.col-xs-6.text-right latest commit #{lastcommit.hash.slice(0, 10)}
+					div.col-xs-6.text-right
+						span latest commit 
+						a(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
 		div.panel-body
 			ul.list-unstyled
 				if (parentPath)
 					li
-						a(href=commandUrl('tree', parentPath)) ..
+						a(href=commandUrl('tree', parentPath),title="Go to parent directory") ..
 				each item in tree
 					li.row
 						div.col-xs-3.ellipsis
 							span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
 							|  
-							a(href=commandUrl(item.type, item.file))= item.name
-						div.col-xs-7.ellipsis= (item.lastcommit && item.lastcommit.message)
+							a(href=commandUrl(item.type, item.file),title=item.name)= item.name
+						div.col-xs-7.ellipsis(title=item.lastcommit && item.lastcommit.message)= (item.lastcommit && item.lastcommit.message)
 						div.col-xs-2.text-right
 							if (item.lastcommit)
 								time.js-time(datetime=item.lastcommit.dateFormatted)= item.lastcommit.date

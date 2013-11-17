@@ -8,7 +8,9 @@ block content
 				div.row
 					div.col-xs-9(title=lastcommit.person_email) #{lastcommit.person_name} authored 
 						time.js-time(datetime=lastcommit.dateFormatted)= lastcommit.date
-					div.col-xs-3.text-right latest commit #{lastcommit.hash.slice(0, 10)}
+					div.col-xs-3.text-right
+						span latest commit 
+						a(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
 		div.panel-body
 			if (isImg)
 				img(src=commandUrl('raw', blobPath))
