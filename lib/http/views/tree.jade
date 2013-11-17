@@ -10,7 +10,7 @@ block content
 						time.js-time(datetime=lastcommit.dateFormatted)= lastcommit.date
 					div.col-xs-6.text-right
 						span latest commit 
-						a(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
+						a.hash(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
 		div.panel-body
 			ul.list-unstyled
 				if (parentPath)

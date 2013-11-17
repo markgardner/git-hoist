@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	each day in days
+		div.panel.panel-default.command-commits
+			div.panel-heading= day.date
+			div.panel-body
+				ul.list-unstyled
+					each commit in day.commits
+						li
+							div
+								a(href=commandUrl('commit', '', commit.hash))= commit.message
+							div 
+								strong= commit.person_name
+								|  authored
+								time.js-time(datetime=commit.dateFormatted)
+							div.actions
+								a.btn.btn-info.hash(href=commandUrl('commit', '', commit.hash)) #{commit.hash.slice(0, 10)} 
+									span.glyphicon.glyphicon-forward
+								br
+								a(href=commandUrl('tree', treePath, commit.hash)) Browse code 
+									span.glyphicon.glyphicon-forward

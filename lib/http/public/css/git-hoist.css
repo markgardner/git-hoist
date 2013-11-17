@@ -2,14 +2,32 @@ h2 {
 	margin: 0 0 15px;
 }
 
+.hash {
+	font-family: Monaco, "Liberation Mono", Courier, monospace;
+}
+
+.panel-body {
+	padding: 0 15px;
+}
+
 .ellipsis {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-.command-tree .glyphicon {
+.glyphicon {
 	color: #777;
+}
+
+.glyphicon-forward {
+	font-size: 11px;
+	color: inherit;
+}
+
+.btn-info .glyphicon-forward {
+	color: #fff;
+	margin-left: 6px;
 }
 
 .navbar-brand {
@@ -36,11 +54,30 @@ h2 {
 	vertical-align: middle;
 }
 
-.breadcrumb>li.no-slash {
+.breadcrumb>li.no-slash.pull-right {
 	margin-top: 4px;
 }
 
 pre.line-numbers {
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+.command-commits ul {
+	margin: 0 -15px;
+}
+
+.command-commits li {
+	position: relative;
+	padding: 10px 165px 10px 15px;
+	line-height: 20px;
+	border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+.command-commits .actions {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	line-height: inherit;
+	text-align: center;
 }
