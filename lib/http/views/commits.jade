@@ -18,5 +18,14 @@ block content
 								a.btn.btn-info.hash(href=commandUrl('commit', '', commit.hash)) #{commit.hash.slice(0, 10)} 
 									span.glyphicon.glyphicon-forward
 								br
-								a(href=commandUrl('tree', treePath, commit.hash)) Browse code 
+								a(href=commandUrl(type || 'tree', blobPath, commit.hash)) Browse code 
 									span.glyphicon.glyphicon-forward
+	div.text-center
+		ul.pagination.pagination-lg
+			li(class=current === 1 ? 'disabled' : undefined)
+				a(href=url + (current < 3 ? '' : '?page=' + (current - 1))) &larr;
+			each page in pages
+				li(class=current === page ? 'active' : undefined)
+					a(href=url + (page === 1 ? '' : '?page=' + page))= page
+			li(class=current === pages.length ? 'disabled' : undefined)
+				a(href=url + '?page=' + (current === pages.length ? current : current + 1)) &rarr;
