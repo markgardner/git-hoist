@@ -31,3 +31,8 @@ block content
 		div.panel.panel-default.command-tree
 			div.panel-heading REAME.md
 			div.panel-body !{readme}
+	else if (readme === false)
+		div.alert.alert-info
+			| Unable to find 
+			strong REAME.md 
+			| for this repo
