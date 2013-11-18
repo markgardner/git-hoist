@@ -10,7 +10,7 @@ block content
 				div.col-xs-6.text-right
 					span= commit.hash
 
-	- var classes = { '@': 'info', '+': 'add', '-': 'remove' }
+	- var classes = { '@': 'info', '+': 'add', '-': 'remove', '\\': 'info' }
 	each file in files
 		div.panel.panel-default.command-commit
 			div.panel-heading

@@ -2,6 +2,15 @@ h2 {
 	margin: 0 0 15px;
 }
 
+.btn.dropdown-toggle span {
+	display: inline-block;
+	line-height: 16px;
+	max-width: 100px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
 .hash {
 	font-family: Monaco, "Liberation Mono", Courier, monospace;
 }
