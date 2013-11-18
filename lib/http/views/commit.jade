@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	div.panel.panel-default.command-commit
+		div.panel-heading
+			div.ellipsis= commit.message
+			div.row
+				div.col-xs-6(title=commit.person_email) #{commit.person_name} authored 
+					time.js-time(datetime=commit.dateFormatted)= commit.date
+				div.col-xs-6.text-right
+					span= commit.hash
+
+	- var classes = { '@': 'info', '+': 'add', '-': 'remove' }
+	each file in files
+		div.panel.panel-default.command-commit
+			div.panel-heading
+				div
+				div.row
+					div.col-xs-6.ellipsis= file.name
+					div.col-xs-6.text-right
+						a.btn.btn-info.btn-xs(href=commandUrl('blob', file.name)) View file @ #{commit.hash.slice(0, 7)}
+							span.glyphicon.glyphicon-forward
+			div.panel-body.code-body
+				each diff in file.diff
+					code(class=classes[diff.charAt(0)])= diff

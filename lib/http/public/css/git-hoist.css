@@ -81,3 +81,28 @@ pre.line-numbers {
 	line-height: inherit;
 	text-align: center;
 }
+
+.command-commit code {
+	display: block;
+	color: #000;
+	background: transparent;
+	white-space: pre;
+}
+
+.command-commit code.add {
+	background: #dfd;
+}
+
+.command-commit code.remove {
+	background: #fdd;
+}
+
+.command-commit code.info {
+	background: #f8f8ff;
+}
+
+.command-commit .code-body {
+	overflow: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
