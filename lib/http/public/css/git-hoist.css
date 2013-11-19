@@ -29,6 +29,7 @@ h2 {
 .panel-code pre {
 	margin: 0;
 	border: 0 none;
+	background: #fff;
 }
 
 .ellipsis {
