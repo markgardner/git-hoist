@@ -15,6 +15,10 @@ h2 {
 	font-family: Monaco, "Liberation Mono", Courier, monospace;
 }
 
+.panel-default>.panel-heading {
+	background-color: #eee;
+}
+
 .panel-code {
 	padding: 0;
 	overflow: auto;
@@ -78,6 +82,24 @@ h2 {
 pre.line-numbers {
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+.command-tree .panel-heading {
+	border-bottom: 0 none;
+}
+
+.command-tree .panel-body {
+	background: #f9f9f9;
+	padding: 0 15px;
+}
+
+.command-tree .panel-body ul {
+	margin: 0;
+	line-height: 35px;
+}
+
+.command-tree .panel-body li {
+	border-top: 1px solid #ddd;
 }
 
 .command-commits ul {

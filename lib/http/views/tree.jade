@@ -14,8 +14,10 @@ block content
 		div.panel-body
 			ul.list-unstyled
 				if (parentPath)
-					li
-						a(href=commandUrl('tree', parentPath),title="Go to parent directory") ..
+					li.row
+						div.col-xs-12
+							span.glyphicon
+							a(href=commandUrl('tree', parentPath),title="Go to parent directory") ..
 				each item in tree
 					li.row
 						div.col-xs-3.ellipsis
