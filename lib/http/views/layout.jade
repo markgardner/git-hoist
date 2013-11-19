@@ -33,7 +33,10 @@ html(lang="en")
 									span.caret
 								ul.dropdown-menu
 									li
-										a(href="") Link
+										each item in branches
+											a(href=commandUrl('tree', blobPath, item))
+												span(class=(branch === item ? "glyphicon glyphicon-check" : "glyphicon"))
+												|  #{item}
 						li.no-slash
 							a(href=commandUrl('tree', '/'))= repo
 						each trailDef, name in trails

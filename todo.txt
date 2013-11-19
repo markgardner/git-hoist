@@ -1,2 +1,2 @@
-- Add web UI
 - Adding branch access support
+- Switch to using libgit2(http://libgit2.github.com/)(https://github.com/libgit2/node-gitteh,https://github.com/nodegit/nodegit/tree/wip) instead of spawned git processes.
