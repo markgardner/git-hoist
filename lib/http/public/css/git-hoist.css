@@ -88,18 +88,22 @@ pre.line-numbers {
 	border-bottom: 0 none;
 }
 
-.command-tree .panel-body {
+.command-tree .panel-commits {
 	background: #f9f9f9;
 	padding: 0 15px;
 }
 
-.command-tree .panel-body ul {
+.command-tree .panel-commits ul {
 	margin: 0;
 	line-height: 35px;
 }
 
-.command-tree .panel-body li {
+.command-tree .panel-commits li {
 	border-top: 1px solid #ddd;
+}
+
+.command-commits .panel-body {
+	padding: 0 15px;
 }
 
 .command-commits ul {

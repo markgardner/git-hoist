@@ -11,7 +11,7 @@ block content
 					div.col-xs-6.text-right
 						span latest commit 
 						a.hash(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
-		div.panel-body
+		div.panel-commits
 			ul.list-unstyled
 				if (parentPath)
 					li.row
