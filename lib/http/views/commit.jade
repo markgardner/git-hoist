@@ -20,6 +20,6 @@ block content
 					div.col-xs-6.text-right
 						a.btn.btn-info.btn-xs(href=commandUrl('blob', file.name)) View file @ #{commit.hash.slice(0, 7)}
 							span.glyphicon.glyphicon-forward
-			div.panel-body.code-body
+			div.panel-body.panel-code
 				each diff in file.diff
 					code(class=classes[diff.charAt(0)])= diff

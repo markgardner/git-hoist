@@ -11,11 +11,13 @@ block content
 					div.col-xs-3.text-right
 						span latest commit 
 						a(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
-		div.panel-body
-			if (isImg)
+		if (isImg)
+			div.panel-body.text-center
 				img(src=commandUrl('raw', blobPath))
-			else if (isMarked)
+		else if (isMarked)
+			div.panel-body
 				!{blob}
-			else
+		else
+			div.panel-body.panel-code
 				pre(class=extension ? "line-numbers" : undefined)
 					code(class=extension ? 'language-' + extension : undefined)= blob

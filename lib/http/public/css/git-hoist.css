@@ -15,8 +15,16 @@ h2 {
 	font-family: Monaco, "Liberation Mono", Courier, monospace;
 }
 
-.panel-body {
-	padding: 0 15px;
+.panel-code {
+	padding: 0;
+	overflow: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.panel-code pre {
+	margin: 0;
+	border: 0 none;
 }
 
 .ellipsis {
@@ -108,10 +116,4 @@ pre.line-numbers {
 
 .command-commit code.info {
 	background: #f8f8ff;
-}
-
-.command-commit .code-body {
-	overflow: auto;
-	overflow-x: auto;
-	overflow-y: hidden;
 }
