@@ -12,9 +12,7 @@ html(lang="en")
 		nav.navbar.navbar-default.navbar-static-top(role="navigation")
 			div.container
 				div.navbar-header
-					a.navbar-brand(href="/")
-						img(src="/img/fav-icon.png")
-						span  #{site.sitename}
+					a.navbar-brand(href="/")= site.sitename
 					
 				div.collapse.navbar-collapse
 					p.navbar-text.navbar-right Rendered in #{renderTimeSpan} ms

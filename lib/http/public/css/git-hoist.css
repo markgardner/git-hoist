@@ -54,12 +54,11 @@ h2 {
 
 .navbar-brand {
 	padding: 9px 15px;
-}
-
-.navbar-brand span {
 	font-size: 28px;
-	line-height: 28px;
-	vertical-align: middle;
+	line-height: 32px;
+	background: url(/img/logo.png) no-repeat 15px center;
+	background-size: 32px 32px;
+	text-indent: 40px;
 }
 
 .breadcrumb .btn-group {
