@@ -52,13 +52,14 @@ h2 {
 	margin-left: 6px;
 }
 
-.navbar-brand {
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover {
 	padding: 9px 15px;
-	font-size: 28px;
-	line-height: 32px;
+	font: italic bold 28px/32px 'Titillium Web', sans-serif;
 	background: url(/img/logo.png) no-repeat 15px center;
 	background-size: 32px 32px;
 	text-indent: 40px;
+	color: #413715;
 }
 
 .breadcrumb .btn-group {
