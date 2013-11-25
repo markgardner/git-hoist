@@ -19,7 +19,8 @@
     "highlight.js": "~7.3.0",
     "jade": "~0.35.0",
     "mime": "~1.2.11",
-    "marked": "~0.2.10"
+    "marked": "~0.2.10",
+    "underscore": "~1.5.2"
   },
   "engines": {
     "node": "~0.8 || ~0.10"
