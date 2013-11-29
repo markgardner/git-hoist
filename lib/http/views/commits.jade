@@ -27,5 +27,5 @@ block content
 			each page in pages
 				li(class=current === page ? 'active' : undefined)
 					a(href=url + (page === 1 ? '' : '?page=' + page))= page
-			li(class=current === pages.length ? 'disabled' : undefined)
+			li(class=current === pages.length || pages.length === 0 ? 'disabled' : undefined)
 				a(href=url + '?page=' + (current === pages.length ? current : current + 1)) &rarr;

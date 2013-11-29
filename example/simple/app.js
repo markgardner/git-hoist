@@ -28,32 +28,22 @@ githoist.start({
 	users: new githoist.auth.Basic({
 		groups: ['admins', 'limited'],
 		users: {
-			kevin_smiles: {
+			mark: {
 				password: 'test',
-				sshKey: '<* you pub ssh key *>',
+				//sshKey: '<* you pub ssh key *>',
 				groups: ['admins']
-			},
-			joe_bob: {
-				password: 'test'
-			},
-			test: {
-				password: '121',
-				groups: ['limited']
 			}
 		}
 	}),
 	repos: {
 		'test-repo.git': {
 			access: {
-				joe_bob: githoist.access.READ + githoist.access.WRITE
+				mark: githoist.access.READ + githoist.access.WRITE
 			},
 			owner: 'Kevin Smiles',
 			description: 'Describe it',
 			website: 'http://www.smiles.bak/',
 			title: 'This is a test Repo'
-		},
-		'frontier.git': {
-			owner: 'No One'
 		}
 	}
 })
