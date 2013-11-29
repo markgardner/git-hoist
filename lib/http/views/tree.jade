@@ -11,23 +11,34 @@ block content
 					div.col-xs-6.text-right
 						span latest commit 
 						a.hash(href=commandUrl('commit', '', lastcommit.hash))= lastcommit.hash.slice(0, 10)
+			else if (emptyRepo)
+				div.ellipsis This is an empty repository
 		div.panel-commits
-			ul.list-unstyled
-				if (parentPath)
-					li.row
-						div.col-xs-12
-							span.glyphicon
-							a(href=commandUrl('tree', parentPath),title="Go to parent directory") ..
-				each item in tree
-					li.row
-						div.col-xs-3.ellipsis
-							span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
-							|  
-							a(href=commandUrl(item.type, item.file),title=item.name)= item.name
-						div.col-xs-7.ellipsis(title=item.lastcommit && item.lastcommit.message)= (item.lastcommit && item.lastcommit.message)
-						div.col-xs-2.text-right
-							if (item.lastcommit)
-								time.js-time(datetime=item.lastcommit.dateFormatted)= item.lastcommit.date
+			if (emptyRepo)
+				div.row.form-horizontal.empty-repo
+					label.col-xs-2.control-label Repository clone URL
+					div.input-group.col-xs-6
+						span.input-group-btn
+							button.btn.btn-default.active(type="button",data-path=remotePrefix + 'test') HTTP
+							button.btn.btn-default(type="button") SSH
+						input.form-control(type="text")
+			else
+				ul.list-unstyled
+					if (parentPath)
+						li.row
+							div.col-xs-12
+								span.glyphicon
+								a(href=commandUrl('tree', parentPath),title="Go to parent directory") ..
+					each item in tree
+						li.row
+							div.col-xs-3.ellipsis
+								span(class="glyphicon glyphicon-" + (item.type === 'tree' ? 'folder-close' : 'file'))
+								|  
+								a(href=commandUrl(item.type, item.file),title=item.name)= item.name
+							div.col-xs-7.ellipsis(title=item.lastcommit && item.lastcommit.message)= (item.lastcommit && item.lastcommit.message)
+							div.col-xs-2.text-right
+								if (item.lastcommit)
+									time.js-time(datetime=item.lastcommit.dateFormatted)= item.lastcommit.date
 
 	if (readme)
 		div.panel.panel-default.command-tree
