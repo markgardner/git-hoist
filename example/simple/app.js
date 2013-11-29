@@ -7,7 +7,8 @@ githoist.start({
 	config: {
 		http: {
 			sitename: 'Git-Hoist Sample',
-			hostname: 'localhost',
+			remotePrefix: 'http://localhost:9080/git',
+			prefix: '/git',
 			port: 9080/*,
 			cert: {
 				key: fs.readFileSync(path.join(__dirname, 'host.key')),

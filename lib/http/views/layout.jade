@@ -2,11 +2,11 @@ doctype 5
 html(lang="en")
 	head
 		title= site.sitename
-		link(rel="icon",type="image/png",href="/img/fav-icon.png")
+		link(rel="icon",type="image/png",href=resolveUrl("/img/fav-icon.png"))
 		link(rel="stylesheet",href="http://fonts.googleapis.com/css?family=Titillium+Web:600italic")
 		link(rel="stylesheet",href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css")
-		link(rel="stylesheet",href="/css/prism.css")
-		link(rel="stylesheet",href="/css/git-hoist.css")
+		link(rel="stylesheet",href=resolveUrl("/css/prism.css"))
+		link(rel="stylesheet",href=resolveUrl("/css/git-hoist.css"))
 
 		block header
 	body
@@ -52,5 +52,5 @@ html(lang="en")
 			block content
 
 		script(src="//code.jquery.com/jquery-1.10.2.min.js")
-		script(src="/js/prism.js")
-		script(src="/js/git-hoist.js")
+		script(src=resolveUrl("/js/prism.js"))
+		script(src=resolveUrl("/js/git-hoist.js"))
