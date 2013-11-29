@@ -17,11 +17,11 @@ block content
 			if (emptyRepo)
 				div.row.form-horizontal.empty-repo
 					label.col-xs-2.control-label Repository clone URL
-					div.input-group.col-xs-6
+					div.input-group.col-xs-6.clone-selector
 						span.input-group-btn
-							button.btn.btn-default.active(type="button",data-path=remotePrefix + 'test') HTTP
-							button.btn.btn-default(type="button") SSH
-						input.form-control(type="text")
+							button.btn.btn-default.active(type="button",data-path=resolveUrl('/' + repo)) HTTP
+							button.btn.btn-default(type="button",data-path=sshRemotePrefix + ':' + repo) SSH
+						input.form-control(type="text",readonly)
 			else
 				ul.list-unstyled
 					if (parentPath)

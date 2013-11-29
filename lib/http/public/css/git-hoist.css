@@ -11,6 +11,11 @@ h2 {
 	vertical-align: middle;
 }
 
+.form-control[readonly] {
+	cursor: inherit;
+	background: #fff;
+}
+
 .hash {
 	font-family: Monaco, "Liberation Mono", Courier, monospace;
 }

@@ -8,6 +8,7 @@ githoist.start({
 		http: {
 			sitename: 'Git-Hoist Sample',
 			remotePrefix: 'http://localhost:9080/git',
+			sshRemotePrefix: 'git@localhost',
 			prefix: '/git',
 			port: 9080/*,
 			cert: {
