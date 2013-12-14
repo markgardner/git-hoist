@@ -20,7 +20,11 @@ html(lang="en")
 
 		div.container
 			if (repo)
-				h2= repo
+				div.clearfix
+					h2.pull-left= repo
+					a(href=commandUrl('archive', blobPath)).pull-right.btn.btn-default
+						span.glyphicon.glyphicon-cloud-download 
+						|  Download As Zip
 
 				if (command !== 'commit')
 					ol.breadcrumb
